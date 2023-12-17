@@ -6,7 +6,7 @@ def sum_digit(n):
     :param n: Positive integer number
     :return: Sum of digits in n
     """
-    if int(n / 10) < 1:
+    if n <= 9:
         return n
     return (n % 10) + sum_digit(int(n / 10))
 
