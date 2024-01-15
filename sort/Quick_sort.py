@@ -28,9 +28,35 @@ class QuickSort:
             self.quick_sort_lomuto(nums, l, p - 1)
             self.quick_sort_lomuto(nums, p + 1, h)
 
+    def quick_sort_hoare(self, nums, l, h):
+        if l < h:
+            p = self.hoarse_partition(nums, l, h)
+            print(p)
+            self.quick_sort_hoare(nums, l, p)
+            self.quick_sort_hoare(nums, p + 1, h)
+
+    def hoarse_partition(self, nums, l, h):
+        i = l - 1
+        j = h + 1
+        pivot = nums[l]
+        while True:
+            i += 1
+            while nums[i] < pivot:
+                i += 1
+
+            j -= 1
+            while nums[j] > pivot:
+                j -= 1
+            if i >= j:
+                return j
+            nums[i], nums[j] = nums[j], nums[i]
+
 
 if __name__ == '__main__':
     test_arr_1 = [8, 4, 7, 9, 3, 10, 5]
     quick_sort = QuickSort()
     quick_sort.quick_sort_lomuto(test_arr_1, 0, len(test_arr_1) - 1)
+    print(test_arr_1)
+    test_arr_1 = [8, 4, 7, 9, 3, 10, 5]
+    quick_sort.quick_sort_hoare(test_arr_1, 0, 6)
     print(test_arr_1)
