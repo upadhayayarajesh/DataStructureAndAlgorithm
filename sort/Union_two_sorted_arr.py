@@ -6,7 +6,7 @@ class UnionTwoSort:
     def union(self, arr1, arr2):
         """
         Time Complexity: O(m +n)
-        Space Complexity: O(1)
+        Space Complexity:
         :param arr1:
         :param arr2:
         :return:
