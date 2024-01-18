@@ -4,6 +4,13 @@ class PairSum:
     """
 
     def pair_sum(self, nums, s):
+        """
+        Time Complexity: O(N)
+        Space Complexity: O(N)
+        :param nums:
+        :param s:
+        :return:
+        """
         dict = {}
         for v in nums:
             elem = s - v
