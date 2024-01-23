@@ -100,6 +100,12 @@ class LinkedList:
 
         self.size += 1
 
+    def delete_first_node(self):
+        if not self.head.next:
+            self.head = None
+        else:
+            self.head = self.head.next
+
 
 if __name__ == '__main__':
     linked_list = LinkedList()
@@ -116,4 +122,6 @@ if __name__ == '__main__':
     empty.insert_end(5)
     empty.display()
     linked_list.insert_position(27, 3)
+    linked_list.display()
+    linked_list.delete_first_node()
     linked_list.display()
