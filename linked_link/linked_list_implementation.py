@@ -64,6 +64,20 @@ class LinkedList:
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
+        self.size += 1
+
+    def insert_end(self, data):
+        """
+        Time Complexity: O(n)
+        """
+        if self.size == 0:
+            self.head = Node(data)
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = Node(data)
+        self.size += 1
 
 
 if __name__ == '__main__':
@@ -75,3 +89,8 @@ if __name__ == '__main__':
     linked_list.display()
     linked_list.insert_begin(2)
     linked_list.display()
+    linked_list.insert_end(40)
+    empty = LinkedList()
+    linked_list.display()
+    empty.insert_end(5)
+    empty.display()
