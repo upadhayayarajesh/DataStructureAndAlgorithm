@@ -79,6 +79,27 @@ class LinkedList:
             current.next = Node(data)
         self.size += 1
 
+    def insert_position(self, data, position):
+        """
+        Time Complexity: O(position)
+        """
+        if position > self.size:
+            return
+        if position == 1:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            current = self.head
+            while position > 1:
+                current = current.next
+                position -= 1
+            new_node = Node(data)
+            new_node.next = current.next
+            current.next = new_node
+
+        self.size += 1
+
 
 if __name__ == '__main__':
     linked_list = LinkedList()
@@ -94,3 +115,5 @@ if __name__ == '__main__':
     linked_list.display()
     empty.insert_end(5)
     empty.display()
+    linked_list.insert_position(27, 3)
+    linked_list.display()
