@@ -38,10 +38,24 @@ class DoublyLinkedList:
                 curr = curr.next
         print(res)
 
+    def insert_end(self, data):
+        if self.size == 0:
+            self.head.data = data
+            self.size += 1
+        else:
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+            new_node = Node(data)
+            new_node.prev = curr
+            curr.next = new_node
+
 
 if __name__ == '__main__':
     doubly_linked_list = DoublyLinkedList()
+    empty = DoublyLinkedList()
     doubly_linked_list.insert_begin(3)
     doubly_linked_list.insert_begin(2)
     doubly_linked_list.insert_begin(4)
+    doubly_linked_list.insert_end(1)
     doubly_linked_list.display()
