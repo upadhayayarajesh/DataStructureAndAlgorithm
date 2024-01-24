@@ -16,14 +16,10 @@ class Circular_linked_list:
             self.size += 1
         else:
             new_node = Node(data)
-            head = self.head
-            new_node.next = self.head
-            curr = head
-            while curr.next != head:
-                curr = curr.next
-            curr.next = new_node
-            self.head = new_node
-            self.size += 1
+            new_node.next = self.head.next
+            self.head.next = new_node
+            self.head.next.data = self.head.data
+            self.head.data = data
 
     def display(self):
         if self.size == 0:
