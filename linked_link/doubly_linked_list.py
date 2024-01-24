@@ -78,6 +78,17 @@ class DoublyLinkedList:
         self.head.prev = None
         self.size -= 1
 
+    def delete_tail(self):
+        """
+        Time Complexity: O(n)
+        """
+        if self.size <= 1:
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.prev.next = None
+
 
 if __name__ == '__main__':
     doubly_linked_list = DoublyLinkedList()
@@ -90,4 +101,6 @@ if __name__ == '__main__':
     doubly_linked_list.reverse()
     doubly_linked_list.display()
     doubly_linked_list.delete_head()
+    doubly_linked_list.display()
+    doubly_linked_list.delete_tail()
     doubly_linked_list.display()
