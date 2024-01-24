@@ -117,6 +117,20 @@ class LinkedList:
         else:
             self.head = Node()
 
+    def reverse_linked_list(self):
+        if self.size > 1:
+            current = self.head
+            while current.next:
+                current = current.next
+            h = current
+            head = self.head
+            while head != h:
+                current.next = head
+                head = head.next
+                current = current.next
+            current.next = None
+            self.head = h
+
 
 if __name__ == '__main__':
     linked_list = LinkedList()
@@ -140,4 +154,6 @@ if __name__ == '__main__':
     empty.display()
     empty.delete_first_node()
     empty.display()
+    linked_list.display()
+    linked_list.reverse_linked_list()
     linked_list.display()
