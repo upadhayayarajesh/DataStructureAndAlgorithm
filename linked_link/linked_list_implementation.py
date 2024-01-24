@@ -118,18 +118,19 @@ class LinkedList:
             self.head = Node()
 
     def reverse_linked_list(self):
+        """
+        Time Complexity: O(N)
+        """
         if self.size > 1:
             current = self.head
-            while current.next:
-                current = current.next
-            h = current
-            head = self.head
-            while head != h:
-                current.next = head
-                head = head.next
-                current = current.next
-            current.next = None
-            self.head = h
+            prev = None
+            while current:
+                next = current.next
+                current.next = prev
+                prev = current
+                current = next
+
+            self.head = prev
 
 
 if __name__ == '__main__':
