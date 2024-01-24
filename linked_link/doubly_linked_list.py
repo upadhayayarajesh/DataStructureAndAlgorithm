@@ -39,6 +39,9 @@ class DoublyLinkedList:
         print(res)
 
     def insert_end(self, data):
+        """
+        Time Complexity: O(n)
+        """
         if self.size == 0:
             self.head.data = data
             self.size += 1
@@ -50,6 +53,21 @@ class DoublyLinkedList:
             new_node.prev = curr
             curr.next = new_node
 
+    def reverse(self):
+        """
+        Time Complexity: O(n)
+        Space Complexity: O(1)
+        """
+        if self.size >= 1:
+            current = self.head
+            prev = None
+            while current:
+                prev = current.prev
+                current.prev = current.next
+                current.next = prev
+                current = current.prev
+            self.head = prev.prev
+
 
 if __name__ == '__main__':
     doubly_linked_list = DoublyLinkedList()
@@ -58,4 +76,6 @@ if __name__ == '__main__':
     doubly_linked_list.insert_begin(2)
     doubly_linked_list.insert_begin(4)
     doubly_linked_list.insert_end(1)
+    doubly_linked_list.display()
+    doubly_linked_list.reverse()
     doubly_linked_list.display()
