@@ -19,3 +19,11 @@
 + Extra space for prev
 + Code becomes more complex
 
+## Advantages of Circular Linked list
++ We can transverse the whole list from any node
++ Implementation of algorithm like round-robin
++ we can insert at the beginning and end by just maintaining one tail reference/pointer
+
+# Disadvantages of Circular Linked List
++ Implementation of operations become complex
+
