@@ -38,6 +38,7 @@
 ## Binary  Tree
 
      Every node have at most 2 children.
+     Height of binary tree is the maximum number of node from root to leaf.
 
 ## Tree Traversal
 
