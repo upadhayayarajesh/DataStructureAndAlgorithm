@@ -71,6 +71,24 @@ class Tree:
         else:
             return max(root.data, self.tree_maximum(root.left), self.tree_maximum(root.right))
 
+    def tree_left(self, root):
+        """
+        Print only the left child if two child is only one child print that child
+        """
+        if root is not None:
+            queue = Queue()
+            queue.put(root)
+            while not queue.empty():
+                size = queue.qsize()
+                for i in range(size):
+                    node = queue.get()
+                    if i == 0:
+                        print(node.data)
+                    if node.left is not None:
+                        queue.put(node.left)
+                    if node.right is not None:
+                        queue.put(node.right)
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -80,3 +98,4 @@ if __name__ == '__main__':
     tree.node_distance(root, 2)
     print(tree.tree_size(root))
     print(tree.tree_maximum(root))
+    tree.tree_left(root)
