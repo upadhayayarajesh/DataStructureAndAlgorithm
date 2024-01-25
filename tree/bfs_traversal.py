@@ -1,20 +1,12 @@
 from queue import Queue
 
-
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.left = None
-        self.right = None
+from tree.Tree import Tree
 
 
 class BFS_Traversal:
     """
     Breadth First Search traversals
     """
-
-    def __init__(self):
-        self.root = Node
 
     def bfs_traversal(self, root):
         """
@@ -62,12 +54,9 @@ class BFS_Traversal:
 
 
 if __name__ == '__main__':
-    tree = BFS_Traversal()
-    tree.root.data = 10
-    tree.root.left = Node(20)
-    tree.root.right = Node(30)
-    tree.root.left.left = Node(40)
-    tree.root.left.right = Node(50)
-    tree.root.right.right = Node(70)
-    tree.bfs_traversal(tree.root)
-    tree.bfs_traversal2(tree.root)
+    tree = Tree()
+    tree.initialize_sample_tree()
+    root = tree.get_root()
+    bfs = BFS_Traversal()
+    bfs.bfs_traversal(root)
+    bfs.bfs_traversal2(root)
