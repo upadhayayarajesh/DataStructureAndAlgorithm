@@ -89,6 +89,43 @@ class Tree:
                     if node.right is not None:
                         queue.put(node.right)
 
+    def children_sum(self, root):
+        """
+        Checks if the sum of children is equal to the parent otherwise return false.
+        Time Complexity: O(N)
+        Space Complexity: O(h), where h is the height of the tree
+        """
+        if root.data is None:
+            return True
+        elif root.left is None and root.right is None:
+            return True
+        else:
+            s = 0
+            if root.left is not None:
+                s += root.left.data
+            if root.right is not None:
+                s += root.right.data
+            return s == root.data and self.children_sum(root.left) and self.children_sum(root.right)
+
+    def check_balance_tree(self, root):
+        """
+        Check for the height balance in the subtree not more than one.
+        Time Complexity: O(N)
+        Space Complexity: O(h), where h is the height of the tree
+        """
+        if root is None:
+            return 0
+        l = self.check_balance_tree(root.left)
+        if l == -1:
+            return -1
+        r = self.check_balance_tree(root.right)
+        if r == -1:
+            return -1
+        if abs(l - r) > 1:
+            return -1
+        else:
+            return max(l, r) + 1
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -99,3 +136,5 @@ if __name__ == '__main__':
     print(tree.tree_size(root))
     print(tree.tree_maximum(root))
     tree.tree_left(root)
+    print(tree.children_sum(root))
+    print(tree.check_balance_tree(root))
