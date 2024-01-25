@@ -40,6 +40,26 @@ class BFS_Traversal:
                 queue.put(node.right)
         print(res)
 
+    def bfs_traversal2(self, root):
+        """
+        Time Complexity: O(n)
+        Space Complexity: O(w) , w is the width of the tree
+        """
+        if root is not None:
+            queue = Queue()
+            queue.put(root)
+            while not queue.empty():
+                count = queue.qsize()
+                res = ""
+                for i in range(count):
+                    node = queue.get()
+                    res += str(node.data) + " "
+                    if node.left is not None:
+                        queue.put(node.left)
+                    if node.right is not None:
+                        queue.put(node.right)
+                print(res)
+
 
 if __name__ == '__main__':
     tree = BFS_Traversal()
@@ -50,3 +70,4 @@ if __name__ == '__main__':
     tree.root.left.right = Node(50)
     tree.root.right.right = Node(70)
     tree.bfs_traversal(tree.root)
+    tree.bfs_traversal2(tree.root)
