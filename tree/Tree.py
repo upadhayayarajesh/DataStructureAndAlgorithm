@@ -1,3 +1,6 @@
+from queue import Queue
+
+
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -47,6 +50,17 @@ class Tree:
                 self.node_distance(root.left, K)
                 self.node_distance(root.right, K)
 
+    def tree_size(self, root):
+        """
+        Time Complexity: O(N)
+        Space Complexity: O(h), where h is the height of the tree
+        """
+
+        if root is None:
+            return 0
+        else:
+            return 1 + self.tree_size(root.left) + self.tree_size(root.right)
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -54,3 +68,4 @@ if __name__ == '__main__':
     root = tree.get_root()
     print(tree.height(root))
     tree.node_distance(root, 2)
+    print(tree.tree_size(root))
