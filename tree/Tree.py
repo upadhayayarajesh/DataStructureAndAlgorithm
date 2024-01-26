@@ -1,3 +1,4 @@
+import queue
 from queue import Queue
 
 
@@ -126,6 +127,27 @@ class Tree:
         else:
             return max(l, r) + 1
 
+    def max_width_tree(self, root):
+        """
+        Time Complexity: \u03B8(N)
+        Space Complexity: O(w), where w is the width of the tree
+        """
+        res = 0
+        if root is None:
+            return res
+        q = Queue()
+        q.put(root)
+        while not q.empty():
+            size = q.qsize()
+            res = max(res, size)
+            for i in range(size):
+                node = q.get()
+                if node.left is not None:
+                    q.put(node.left)
+                if node.right is not None:
+                    q.put(node.right)
+        return res
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -138,3 +160,4 @@ if __name__ == '__main__':
     tree.tree_left(root)
     print(tree.children_sum(root))
     print(tree.check_balance_tree(root))
+    print(tree.max_width_tree(root))
