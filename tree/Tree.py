@@ -148,6 +148,24 @@ class Tree:
                     q.put(node.right)
         return res
 
+    def converting_DLL(self, root, prev):
+        """
+        Convert the given tree into a Doubly linked list inplace
+        left is previous and right is next.
+        Time Complexity: \u03B8(N)
+        Space Complexity: \u03B8(1)
+        """
+        if root is not None:
+            head = self.converting_DLL(root.left, prev)
+            if prev is None:
+                head = root
+            else:
+                root.left = prev
+                prev.right = root
+            prev = root
+            self.converting_DLL(root.right, prev)
+            return head
+
 
 if __name__ == '__main__':
     tree = Tree()
