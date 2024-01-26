@@ -204,6 +204,21 @@ class Tree:
             print(" ".join(map(str, stack)))
             h += 1
 
+    res = 0
+
+    def diameter_of_tree(self, root):
+        """
+        Time Complexity: O(N)
+        space Complexity: O(h), where h is the height of the tree.
+        """
+        if root is None:
+            return 0
+        l_h = self.diameter_of_tree(root.left)
+        r_h = self.diameter_of_tree(root.right)
+        global res
+        res = max(l_h + r_h + 1, res)
+        return max(l_h, r_h) + 1
+
 
 if __name__ == '__main__':
     tree = Tree()
