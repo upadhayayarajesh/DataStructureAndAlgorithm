@@ -166,6 +166,20 @@ class Tree:
             self.converting_DLL(root.right, prev)
             return head
 
+    def constructTree(self, inorder, preorder):
+        """
+        Constructing a binary tree from inorder a pre-order traversal
+        Time Complexity: O(N^2), finding an element in array is O(N) we can use hashing to decree the time complexity to o(n).
+        Space Complexity: O(N)
+        """
+        if not inorder or not preorder:
+            return None
+        root = Node(preorder[0])
+        index = inorder.index(preorder[0])
+        root.left = self.constructTree(inorder[:index], preorder[1:1 + index])
+        root.right = self.constructTree(inorder[index + 1:], preorder[1 + index:])
+        return root
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -179,3 +193,8 @@ if __name__ == '__main__':
     print(tree.children_sum(root))
     print(tree.check_balance_tree(root))
     print(tree.max_width_tree(root))
+    inorder = [20, 10, 40, 30, 50]
+    preorder = [10, 20, 30, 40, 50]
+
+    t = tree.constructTree(inorder, preorder)
+    print(t)
