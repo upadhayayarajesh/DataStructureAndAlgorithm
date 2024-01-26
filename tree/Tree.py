@@ -1,4 +1,3 @@
-import queue
 from queue import Queue
 
 
@@ -180,6 +179,31 @@ class Tree:
         root.right = self.constructTree(inorder[index + 1:], preorder[1 + index:])
         return root
 
+    def spiralTraversal(self, root):
+        """
+        Time Complexity: O(N)
+        Space Complexity: O(N +w), where w is the width of the tree for an array.
+        """
+        if root is None:
+            return None
+        q = Queue()
+        q.put(root)
+        h = 0
+        while not q.empty():
+            s = q.qsize()
+            stack = []
+            for i in range(s):
+                node = q.get()
+                stack.append(node.data)
+                if node.left is not None:
+                    q.put(node.left)
+                if node.right is not None:
+                    q.put(node.right)
+            if h % 2 != 0:
+                stack.reverse()
+            print(" ".join(map(str, stack)))
+            h += 1
+
 
 if __name__ == '__main__':
     tree = Tree()
@@ -195,6 +219,5 @@ if __name__ == '__main__':
     print(tree.max_width_tree(root))
     inorder = [20, 10, 40, 30, 50]
     preorder = [10, 20, 30, 40, 50]
-
-    t = tree.constructTree(inorder, preorder)
-    print(t)
+    tree.constructTree(inorder, preorder)
+    tree.spiralTraversal(root)
